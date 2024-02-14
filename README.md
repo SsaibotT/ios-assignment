@@ -5,6 +5,7 @@
 5. Make it able to use both combine и non-combine network layers - 1 point
 6. Make a unit test for network layer - 1 point
 
+Done - 1, 2, 3, 4, 5
 ===========
 
 Please create a PR with your changes and list all your completed points in the PR description. 
