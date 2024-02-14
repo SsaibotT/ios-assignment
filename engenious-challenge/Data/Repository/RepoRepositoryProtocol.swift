@@ -9,5 +9,5 @@ import Foundation
 import Combine
 
 protocol RepoRepositoryProtocol {
-    func getRepo(username: String) -> AnyPublisher<Repo, ApiError>
+    func getRepo(username: String) -> AnyPublisher<[Repo], ApiError>
 }

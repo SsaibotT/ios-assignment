@@ -13,8 +13,7 @@ protocol ApiClientProtocol {
 }
 
 struct ApiClient: ApiClientProtocol {
-    
-    let urlSession: URLSession!
+    private let urlSession: URLSession
     
     public init(urlSession: URLSession = .shared) {
         self.urlSession = urlSession
@@ -50,7 +49,7 @@ struct ApiClient: ApiClientProtocol {
                 
                 let code = response.statusCode
                 
-                if 200...299 ~= code {
+                if !(200...299).contains(code) {
                     throw ApiError.badRequest
                 }
                 
@@ -65,7 +64,7 @@ struct ApiClient: ApiClientProtocol {
     }
     
     private func makeRequest(urlString: String, headers: ApiHeaders, requestType: ApiReqeustType) -> URLRequest? {
-        guard var url = URL(string: urlString) else { return nil }
+        guard let url = URL(string: urlString) else { return nil }
         
         var request = URLRequest(url: url)
         request.httpMethod = requestType.rawValue
@@ -78,8 +77,6 @@ struct ApiClient: ApiClientProtocol {
         switch error {
         case is Swift.DecodingError:
             return .noData
-        case let urlError as URLError:
-            return .badRequest
         case let error as ApiError:
             return error
         default:

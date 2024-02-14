@@ -8,8 +8,8 @@
 import Foundation
 import Combine
 
-struct RepoRepository {
-    var apiClient: ApiClientProtocol!
+struct RepoRepository: RepoRepositoryProtocol {
+    var apiClient: ApiClientProtocol
     
     init(apiClient: ApiClientProtocol = ApiClient()) {
         self.apiClient = apiClient
