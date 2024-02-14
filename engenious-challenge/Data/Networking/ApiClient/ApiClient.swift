@@ -10,6 +10,7 @@ import Combine
 
 protocol ApiClientProtocol {
     func procedure<T: Codable>(api: ApiValue) -> AnyPublisher<T, ApiError>
+    func procedure(api: ApiValue, completion: @escaping ((Result<Data?, ApiError>) -> Void))
 }
 
 struct ApiClient: ApiClientProtocol {
@@ -55,7 +56,6 @@ struct ApiClient: ApiClientProtocol {
                 
                 return data
             }
-            .receive(on: DispatchQueue.main)
             .decode(type: T.self, decoder: JSONDecoder())
             .mapError { error in
                 return handleError(error)
@@ -82,5 +82,48 @@ struct ApiClient: ApiClientProtocol {
         default:
             return .undefined
         }
+    }
+}
+
+// Non combine get
+extension ApiClient {
+    
+    func procedure(
+        api: ApiValue,
+        completion: @escaping ((Result<Data?, ApiError>) -> Void)
+    ) {
+        guard let request = makeRequest(
+            urlString: api.path,
+            headers: api.headers,
+            requestType: .get
+        ) else { 
+            completion(.failure(ApiError.badRequest))
+            return
+        }
+        
+        switch api.type {
+        case .get:
+            get(request: request, completion: completion)
+        default:
+            print("Implement other cases")
+            completion(.failure(ApiError.undefined))
+        }
+    }
+    
+    private func get(request: URLRequest, completion: @escaping ((Result<Data?, ApiError>) -> Void)) {
+        urlSession.dataTask(with: request) { data, response, error in
+            guard let response = response as? HTTPURLResponse else {
+                completion(.failure(ApiError.undefined))
+                return
+            }
+            
+            let code = response.statusCode
+            
+            if !(200...299).contains(code) {
+                completion(.failure(ApiError.badRequest))
+            }
+            
+            completion(.success(data))
+        }.resume()
     }
 }

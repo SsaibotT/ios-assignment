@@ -23,6 +23,7 @@ final class RepoViewModel {
     
     func getRepo() {
         repository.getRepo(username: username)
+            .receive(on: DispatchQueue.main)
             .sink(receiveCompletion: { [weak self] error in
                 switch error {
                 case .finished:
@@ -35,5 +36,10 @@ final class RepoViewModel {
                 self?.repos.send(repos)
             })
             .store(in: &cancelables)
+    }
+    
+    // Non combine request
+    func getRepo(completion: @escaping (Result<[Repo], ApiError>) -> Void) {
+        repository.getRepo(username: username, completion: completion)
     }
 }

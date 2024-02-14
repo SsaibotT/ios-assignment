@@ -28,6 +28,7 @@
 		37D850A62B7CE05C000DFDE9 /* RepoRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D850A52B7CE05C000DFDE9 /* RepoRepository.swift */; };
 		37D850A82B7CE232000DFDE9 /* RepoRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D850A72B7CE232000DFDE9 /* RepoRepositoryProtocol.swift */; };
 		37D850AE2B7CE2FF000DFDE9 /* RepoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D850AD2B7CE2FF000DFDE9 /* RepoViewModel.swift */; };
+		37FE29BC2B7D1908001FF09E /* DataResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FE29BB2B7D1908001FF09E /* DataResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,6 +74,7 @@
 		37D850A52B7CE05C000DFDE9 /* RepoRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoRepository.swift; sourceTree = "<group>"; };
 		37D850A72B7CE232000DFDE9 /* RepoRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoRepositoryProtocol.swift; sourceTree = "<group>"; };
 		37D850AD2B7CE2FF000DFDE9 /* RepoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoViewModel.swift; sourceTree = "<group>"; };
+		37FE29BB2B7D1908001FF09E /* DataResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataResult.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 			children = (
 				37D850A72B7CE232000DFDE9 /* RepoRepositoryProtocol.swift */,
 				37D850A52B7CE05C000DFDE9 /* RepoRepository.swift */,
+				37FE29BB2B7D1908001FF09E /* DataResult.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				20F3FA3528379AE2008BFAF8 /* RepoViewController.swift in Sources */,
 				20F3FA3128379AE2008BFAF8 /* AppDelegate.swift in Sources */,
 				37D850992B7CD932000DFDE9 /* ApiValue.swift in Sources */,
+				37FE29BC2B7D1908001FF09E /* DataResult.swift in Sources */,
 				37D8509B2B7CD947000DFDE9 /* ApiHeaderType.swift in Sources */,
 				20F3FA6328379F1D008BFAF8 /* Repo.swift in Sources */,
 				37D850A32B7CDB70000DFDE9 /* ApiResponse.swift in Sources */,
