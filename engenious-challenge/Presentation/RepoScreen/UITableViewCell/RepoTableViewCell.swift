@@ -21,6 +21,7 @@ class RepoTableViewCell: UITableViewCell {
         stackView.layoutMargins = UIEdgeInsets(top: 14, left: 20, bottom: 14, right: 20)
         stackView.layer.cornerRadius = 10
         stackView.clipsToBounds = true
+        stackView.addBackground(color: UIColor(red: 224/255.0, green: 239/255.0, blue: 252/255.0, alpha: 1.0))
         
         return stackView
     }()
@@ -53,18 +54,10 @@ class RepoTableViewCell: UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         configureConstraints()
-        configureContentView()
     }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        DispatchQueue.main.async {
-            self.configureContentView()
-        }
     }
     
     // MARK: Configuration
@@ -94,10 +87,6 @@ class RepoTableViewCell: UITableViewCell {
     func configure(with title: String, subtitle: String) {
         self.titleLabel.text = title
         self.subtitleLabel.text = title
-    }
-    
-    func configureContentView() {
-        stackView.addBackground(color: UIColor(red: 224/255.0, green: 239/255.0, blue: 252/255.0, alpha: 1.0))
     }
 }
 

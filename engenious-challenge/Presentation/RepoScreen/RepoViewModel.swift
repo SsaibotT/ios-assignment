@@ -28,7 +28,7 @@ final class RepoViewModel {
                 switch error {
                 case .finished:
                     break
-                case .failure(let failure):
+                case .failure:
                     // In here we need to switch through failure
                     self?.errorMessage.value = "Error"
                 }
